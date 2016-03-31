@@ -30,4 +30,3 @@ export MANPAGER='less -X';
 # Node Version Manager Compatibility 
 export NVM_DIR="/Users/dev/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
