@@ -261,3 +261,8 @@ function pg-git() {
 	read FOLDER
 	git remote add $REMOTE sydney-internetmonkey.pagelydev.com:/data/git/$FOLDER
 }
+
+#Copy any public key to the clipboard
+function kcp() {
+	pbcopy < ~/.ssh/$@.pub
+}
