@@ -153,5 +153,9 @@ alias editdns='subl /private/etc/hosts'
 alias editssh='subl ~/.ssh/config'
 alias editbash='subl ~/.bash_profile'
 
-# old muscle memory dies hard
+# Aliases from previous bash_profiles 
+# Old muscle memory dies hard...
 alias ..sites='cd ~/Documents/Websites'
+alias gga='git add'
+alias ggs='git status'
+alias ggm='git commit -m'
