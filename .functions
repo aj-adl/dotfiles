@@ -244,3 +244,20 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+# Quick Git Commits
+# be careful, adds everything
+function gqc() {
+	git add .
+	git commit -m "$1"
+}
+
+# Pagely Specific Function
+# Will add the pagely remote git repo easily for our VPS
+function pg-git() {
+	echo "Enter Remote Name:"
+	read REMOTE
+	echo "Enter git folder name on remote:"
+	read FOLDER
+	git remote add $REMOTE sydney-internetmonkey.pagelydev.com:/data/git/$FOLDER
+}

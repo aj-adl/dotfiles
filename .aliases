@@ -147,3 +147,11 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 
 # Reload the shell (i.e. invoke as a login shell)
 alias reload="exec $SHELL -l"
+
+# Shortcuts for edits
+alias editdns='subl /private/etc/hosts'
+alias editssh='subl ~/.ssh/config'
+alias editbash='subl ~/.bash_profile'
+
+# old muscle memory dies hard
+alias ..sites='cd ~/Documents/Websites'
