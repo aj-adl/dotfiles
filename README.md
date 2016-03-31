@@ -1,4 +1,17 @@
-# Mathias’s dotfiles
+# Aj's custom dotfiles fork
+
+This is my custom fork of the famous "Mathias's Dotfiles". 
+
+Pretty easy to see what has changed from the commit log, if you are wondering what the heck
+this is all about I highly recommend you check out and fork [the original project](https://github.com/mathiasbynens/dotfiles)
+
+Original project readme left below for reference. 
+
+Keep it :100: fam. 
+
+![Remember to use incognito mode when hacking](http://i.imgur.com/iVHfwLc.gif)
+
+## Mathias’s dotfiles
 
 ![Screenshot of my shell prompt](http://i.imgur.com/EkEtphC.png)
 
