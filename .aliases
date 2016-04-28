@@ -60,7 +60,7 @@ alias localip="ipconfig getifaddr en0"
 alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
 
 # Flush Directory Service cache
-alias flush="dscacheutil -flushcache && killall -HUP mDNSResponder"
+alias flush="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo cache flushed"
 
 # Clean up LaunchServices to remove duplicates in the “Open With” menu
 alias lscleanup="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user && killall Finder"
@@ -153,9 +153,13 @@ alias editdns='subl /private/etc/hosts'
 alias editssh='subl ~/.ssh/config'
 alias editbash='subl ~/.bash_profile'
 
-# Aliases from previous bash_profiles 
+# Aliases from previous bash_profiles
 # Old muscle memory dies hard...
 alias ..sites='cd ~/Documents/Websites'
 alias gga='git add'
 alias ggs='git status'
 alias ggm='git commit -m'
+
+# WP CLI specific Aliases
+
+alias wpv='wp ssh --host=vagrant'
