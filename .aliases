@@ -149,9 +149,8 @@ alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resource
 alias reload="exec $SHELL -l"
 
 # Shortcuts for edits
-alias editdns='subl /private/etc/hosts'
+alias editdns='sudo nano /private/etc/hosts && flush'
 alias editssh='subl ~/.ssh/config'
-alias editbash='subl ~/.bash_profile'
 
 # Aliases from previous bash_profiles
 # Old muscle memory dies hard...
@@ -163,3 +162,5 @@ alias ggm='git commit -m'
 # WP CLI specific Aliases
 
 alias wpv='wp ssh --host=vagrant'
+
+alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
