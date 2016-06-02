@@ -269,18 +269,18 @@ function kcp() {
 
 function new-frame-wp() {
 
-	RED='\033[0;31m'
-	GREEN='\033[0;32m'
-	BLUE='\033[0;34m'
-	YELLOW='\033[1;33m'
-	PURPLE='\033[0;35m'
-	NC='\033[0m' # No Color
+	local RED='\033[0;31m'
+	local GREEN='\033[0;32m'
+	local BLUE='\033[0;34m'
+	local YELLOW='\033[1;33m'
+	local PURPLE='\033[0;35m'
+	local NC='\033[0m' # No Color
 
 	local PROJECT=""
 
 	if [ -z "$1" ];
 	then
-		read -p "${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NC}'projectname' / n  (type 'n' to cancel)   " answer
+		read -p "	${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NC}'projectname' / n  (type 'n' to cancel)   " answer
 		case ${answer} in
 		    n|N|No|no|cancel )
 		        exit 1
@@ -332,8 +332,8 @@ function new-frame-wp() {
 
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Performing Search / Replace";
-	echo "${NC}................................";
+	echo "	${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Performing Search / Replace";
+	echo "	${NC}................................";
 	echo "";
 	echo "";
 
@@ -342,8 +342,8 @@ function new-frame-wp() {
 
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Create initial Git commit";
-	echo "${NC}................................";
+	echo "	${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Create initial Git commit";
+	echo "	${NC}................................";
 	echo "";
 	echo "";
 
@@ -352,8 +352,8 @@ function new-frame-wp() {
 
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Installing Project Dependencies";
-	echo "${NC}................................";
+	echo "	${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Installing Project Dependencies";
+	echo "	${NC}................................";
 	echo "";
 	echo "";
 
