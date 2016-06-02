@@ -266,3 +266,61 @@ function pg-git() {
 function kcp() {
 	pbcopy < ~/.ssh/$@.pub
 }
+
+function new-frame-wp() {
+
+	if [ -z "$1" ] then
+		read -p "Please Specify a project name: %projectname% / n  - type 'n' to cancel" answer
+		case ${answer} in
+		    n|N|No|no|cancel )
+		        exit 1
+		    ;;
+		    * )
+		        PROJECT = ${answer}
+		    ;;
+		esac
+	else
+		PROJECT = $1
+	fi
+
+	if [ -z "${PROJECT}" ] then
+		exit 1
+	fi
+
+	echo "Changing Working Dir";
+	echo "................................";
+	cd ~/projects/frame;
+	echo pwd;
+	echo "Cloning BoilerPlate Respository";
+	echo "................................";
+	git clone git@bitbucket.org:framecreative/dazs-wp-boilerplate.git ${PROJECT};
+	echo "Removing original Git Repo";
+	echo "................................";
+	cd ${PROJECT};
+
+	rm -rf .git;
+
+	echo "Initialising new Git repo";
+	echo "................................";
+
+	git init
+
+	echo "Performing Search Replace";
+	echo "................................";
+
+	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/dazs-wp-boilerplate/${PROJECT}/g" {} \;
+
+	echo "Performing Initial Git commit";
+	echo "................................";
+
+	git add .;
+	git commit -m "Initial commit after project initialisation";
+
+	echo "Installing Dependencies";
+	echo "................................";
+
+	composer install
+	npm install
+	bower install
+
+}
