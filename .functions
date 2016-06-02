@@ -276,13 +276,16 @@ function new-frame-wp() {
 	local PURPLE=`tput setaf 5`
 	local NC=`tput sgr0` # No Color
 
+	local NL=`tput il 1`
+
 	local PROJECT=""
 
 	if [ -z "$1" ];
 	then
-		read -p "${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NC}'projectname' / n  (type 'n' to cancel)   " answer
+		read -p "${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NL}${NC}'projectname' / n  (type 'n' to cancel)   " answer
 		case ${answer} in
 		    n|N|No|no|cancel )
+		    	echo "${BLUE}FRAME TOOLSET ${NC}::::${RED} Exiting Setup (user cancellation)"
 		        return 1
 		    ;;
 		    * )
@@ -294,6 +297,7 @@ function new-frame-wp() {
 	fi
 
 	if [ -z "${PROJECT}" ]; then
+		echo "${BLUE}FRAME TOOLSET ${NC}::::${RED} Exiting Setup (input error)"
 		return 1
 	fi
 	echo "";
