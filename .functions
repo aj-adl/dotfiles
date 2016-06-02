@@ -275,6 +275,7 @@ function new-frame-wp() {
 	local YELLOW=`tput setaf 3`
 	local PURPLE=`tput setaf 5`
 	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
 
 	local NL=`tput il 1`
 
@@ -282,10 +283,10 @@ function new-frame-wp() {
 
 	if [ -z "$1" ];
 	then
-		read -p "${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NC}'projectname' / n  (type 'n' to cancel)   " answer
+		read -p "${TAG}${YELLOW}Please Specify a project name: ${NC}'projectname' / n  (type 'n' to cancel)   " answer
 		case ${answer} in
 		    n|N|No|no|cancel )
-		    	echo "${BLUE}FRAME TOOLSET ${NC}::::${RED} Exiting Setup (user cancellation)"
+		    	echo "${TAG}${RED} Exiting Setup (user cancellation)"
 		        return 1
 		    ;;
 		    * )
@@ -297,12 +298,12 @@ function new-frame-wp() {
 	fi
 
 	if [ -z "${PROJECT}" ]; then
-		echo "${BLUE}FRAME TOOLSET ${NC}::::${RED} Exiting Setup (input error)"
+		echo "${TAG}${RED} Exiting Setup (input error)"
 		return 1
 	fi
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Changing Working Dir";
+	echo "${TAG}${GREEN}Changing Working Dir";
 	echo "${NC}................................";
 	echo "";
 	echo "";
@@ -310,14 +311,14 @@ function new-frame-wp() {
 	echo `pwd`;
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Cloning Git repo";
+	echo "${TAG}${GREEN}Cloning Git repo";
 	echo "${NC}................................";
 	echo "";
 	echo "";
 	git clone git@bitbucket.org:framecreative/dazs-wp-boilerplate.git ${PROJECT};
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Removing original Git Repo";
+	echo "${TAG}${GREEN}Removing original Git Repo";
 	echo "${NC}................................";
 	echo "";
 	echo "";
@@ -327,7 +328,7 @@ function new-frame-wp() {
 
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Initialising new Git repo";
+	echo "${TAG}${GREEN}Initialising new Git repo";
 	echo "${NC}................................";
 	echo "";
 	echo "";
@@ -336,7 +337,7 @@ function new-frame-wp() {
 
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Performing Search / Replace";
+	echo "${TAG}${GREEN}Performing Search / Replace";
 	echo "${NC}................................";
 	echo "";
 	echo "";
@@ -346,7 +347,7 @@ function new-frame-wp() {
 
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Create initial Git commit";
+	echo "${TAG}${GREEN}Create initial Git commit";
 	echo "${NC}................................";
 	echo "";
 	echo "";
@@ -356,7 +357,7 @@ function new-frame-wp() {
 
 	echo "";
 	echo "";
-	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Installing Project Dependencies";
+	echo "${TAG}${GREEN}Installing Project Dependencies";
 	echo "${NC}................................";
 	echo "";
 	echo "";
