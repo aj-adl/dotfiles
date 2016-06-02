@@ -269,7 +269,8 @@ function kcp() {
 
 function new-frame-wp() {
 
-	if [ -z "$1" ] then
+	if [ -z "$1" ];
+	then
 		read -p "Please Specify a project name: %projectname% / n  - type 'n' to cancel" answer
 		case ${answer} in
 		    n|N|No|no|cancel )
@@ -283,7 +284,7 @@ function new-frame-wp() {
 		PROJECT = $1
 	fi
 
-	if [ -z "${PROJECT}" ] then
+	if [ -z "${PROJECT}" ]; then
 		exit 1
 	fi
 
