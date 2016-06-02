@@ -282,7 +282,7 @@ function new-frame-wp() {
 
 	if [ -z "$1" ];
 	then
-		read -p "${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NL}${NC}'projectname' / n  (type 'n' to cancel)   " answer
+		read -p "${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NC}'projectname' / n  (type 'n' to cancel)   " answer
 		case ${answer} in
 		    n|N|No|no|cancel )
 		    	echo "${BLUE}FRAME TOOLSET ${NC}::::${RED} Exiting Setup (user cancellation)"
