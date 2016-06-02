@@ -269,56 +269,93 @@ function kcp() {
 
 function new-frame-wp() {
 
+	RED='\033[0;31m'
+	GREEN='\033[0;32m'
+	BLUE='\033[0;34m'
+	YELLOW='\033[1;33m'
+	PURPLE='\033[0;35m'
+	NC='\033[0m' # No Color
+
+	local PROJECT=""
+
 	if [ -z "$1" ];
 	then
-		read -p "Please Specify a project name: %projectname% / n  - type 'n' to cancel" answer
+		read -p "${BLUE}FRAME TOOLSET ${NC}:::: ${YELLOW}Please Specify a project name: ${NC}'projectname' / n  (type 'n' to cancel)   " answer
 		case ${answer} in
 		    n|N|No|no|cancel )
 		        exit 1
 		    ;;
 		    * )
-		        PROJECT = ${answer}
+		        PROJECT=${answer}
 		    ;;
 		esac
 	else
-		PROJECT = $1
+		PROJECT=$1
 	fi
 
 	if [ -z "${PROJECT}" ]; then
 		exit 1
 	fi
-
-	echo "Changing Working Dir";
-	echo "................................";
+	echo "";
+	echo "";
+	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Changing Working Dir";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 	cd ~/projects/frame;
-	echo pwd;
-	echo "Cloning BoilerPlate Respository";
-	echo "................................";
+	echo `pwd`;
+	echo "";
+	echo "";
+	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Cloning Git repo";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 	git clone git@bitbucket.org:framecreative/dazs-wp-boilerplate.git ${PROJECT};
-	echo "Removing original Git Repo";
-	echo "................................";
+	echo "";
+	echo "";
+	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Removing original Git Repo";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 	cd ${PROJECT};
 
 	rm -rf .git;
 
-	echo "Initialising new Git repo";
-	echo "................................";
+	echo "";
+	echo "";
+	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Initialising new Git repo";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 
 	git init
 
-	echo "Performing Search Replace";
-	echo "................................";
+	echo "";
+	echo "";
+	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Performing Search / Replace";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 
 	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/dazs-wp-boilerplate/${PROJECT}/g" {} \;
+	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/deploytest/${PROJECT}/g" {} \;
 
-	echo "Performing Initial Git commit";
-	echo "................................";
+	echo "";
+	echo "";
+	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Create initial Git commit";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 
 	git add .;
 	git commit -m "Initial commit after project initialisation";
 
-	echo "Installing Dependencies";
-	echo "................................";
+	echo "";
+	echo "";
+	echo "${BLUE}FRAME TOOLSET ${NC}:::: ${GREEN}Installing Project Dependencies";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 
 	composer install
 	npm install
