@@ -164,3 +164,5 @@ alias ggm='git commit -m'
 alias wpv='wp ssh --host=vagrant'
 
 alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
+
+alias pstorm="/Applications/PhpStorm.app/Contents/MacOS/phpstorm"
