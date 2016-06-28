@@ -1,14 +1,12 @@
 # Add `~/bin` to the `$PATH`
 export PATH="$HOME/bin:$PATH";
 
-export PATH="$(brew --prefix homebrew/php/php71)/bin:$PATH"
-
 # Add Xampp bin to path, for DS / WP-CLI compatibility
-# echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
-# if [ $? -eq 1 ] ; then
-# 	export XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
-# 	export PATH="$XAMPP_PATH:$PATH"
-# fi
+echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
+if [ $? -eq 1 ] ; then
+	export XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
+	export PATH="$XAMPP_PATH:$PATH"
+fi
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
