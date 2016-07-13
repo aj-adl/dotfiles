@@ -367,3 +367,7 @@ function new-frame-wp() {
 	bower install
 
 }
+
+function frame::sync () {
+	rsync -avzh --exclude '.DS_Store' --exclude "node_modules" --exclude "bower_components" --exclude "vendor" /Users/dev/projects/frame/ /Volumes/datastore-alex-bishop/frame/
+}
