@@ -1,14 +1,15 @@
 # Add `~/bin` to the `$PATH`
+export PATH="$HOME/.composer/vendor/bin:$PATH";
 export PATH="$HOME/bin:$PATH";
+export PATH="$HOME/.rbenv/bin:$PATH";
+
 
 # Add Xampp bin to path, for DS / WP-CLI compatibility
 echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
 if [ $? -eq 1 ] ; then
 	export XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
-	export PATH="$XAMPP_PATH:$PATH"
+	export PATH="$PATH:$XAMPP_PATH"
 fi
-
-export PATH="$HOME/.rbenv/bin:$PATH";
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.

@@ -267,7 +267,7 @@ function kcp() {
 	pbcopy < ~/.ssh/$@.pub
 }
 
-function new-frame-wp() {
+function frame::wp() {
 
 	local RED=`tput setaf 1`
 	local GREEN=`tput setaf 2`
