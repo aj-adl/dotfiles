@@ -315,7 +315,7 @@ function frame::wp() {
 	echo "${NC}................................";
 	echo "";
 	echo "";
-	git clone git@bitbucket.org:framecreative/dazs-wp-boilerplate.git ${PROJECT};
+	git clone git@bitbucket.org:framecreative/frame-wp-boilerplate.git ${PROJECT};
 	echo "";
 	echo "";
 	echo "${TAG}${GREEN}Removing original Git Repo";
@@ -342,8 +342,7 @@ function frame::wp() {
 	echo "";
 	echo "";
 
-	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/dazs-wp-boilerplate/${PROJECT}/g" {} \;
-	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/deploytest/${PROJECT}/g" {} \;
+	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/PROJECTNAME/${PROJECT}/g" {} \;
 
 	echo "";
 	echo "";
@@ -364,7 +363,6 @@ function frame::wp() {
 
 	composer install
 	npm install
-	bower install
 
 }
 
