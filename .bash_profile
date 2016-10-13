@@ -2,6 +2,7 @@
 export PATH="$HOME/.composer/vendor/bin:$PATH";
 export PATH="$HOME/bin:$PATH";
 export PATH="$HOME/.rbenv/bin:$PATH";
+export PATH="$HOME/spark-installer:$PATH";
 
 # Add Xampp bin to path, for DS / WP-CLI compatibility
 echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
