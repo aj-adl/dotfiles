@@ -315,25 +315,53 @@ function frame::wp() {
 	echo "${NC}................................";
 	echo "";
 	echo "";
+
 	git clone git@bitbucket.org:framecreative/frame-wp-boilerplate.git ${PROJECT};
-	echo "";
-	echo "";
-	echo "${TAG}${GREEN}Removing original Git Repo";
-	echo "${NC}................................";
-	echo "";
-	echo "";
+
+	if [ $? -ne 0 ]; then
+		echo "";
+		echo "";
+		echo "${TAG}${RED}Exiting (error cloning git repo repo)";
+		echo "";
+		echo "";
+		exit 1;
+	fi
+
+	if [ ! -d ${PROJECT} ]; then
+		echo "";
+		echo "";
+		echo "${TAG}${RED}Exiting: (Project Folder Creation Failed)";
+		echo "";
+		echo "";
+		exit 1;
+	fi
+
 	cd ${PROJECT};
 
-	rm -rf .git;
 
-	echo "";
-	echo "";
-	echo "${TAG}${GREEN}Initialising new Git repo";
-	echo "${NC}................................";
-	echo "";
-	echo "";
 
-	git init
+
+	if [ -d .git ]; then
+
+		echo "";
+		echo "";
+		echo "${TAG}${GREEN}Removing original Git Repo";
+		echo "${NC}................................";
+		echo "";
+		echo "";
+
+		rm -rf .git;
+
+		echo "";
+		echo "";
+		echo "${TAG}${GREEN}Initialising new Git repo";
+		echo "${NC}................................";
+		echo "";
+		echo "";
+
+		git init;
+	fi
+
 
 	echo "";
 	echo "";
