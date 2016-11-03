@@ -2,6 +2,7 @@
 export PATH="$HOME/.composer/vendor/bin:$PATH";
 export PATH="$HOME/.rbenv/bin:$PATH";
 export PATH="$HOME/.yarn/bin:$PATH";
+export PATH="$PATH:/usr/local/go/bin";
 export PATH="$HOME/bin:$PATH";
 export PATH="$HOME/spark-installer:$PATH";
 
