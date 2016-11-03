@@ -5,6 +5,8 @@ export PATH="$HOME/.yarn/bin:$PATH";
 export PATH="$HOME/bin:$PATH";
 export PATH="$HOME/spark-installer:$PATH";
 
+export GOPATH=$HOME/projects/go
+
 # Add Xampp bin to path, for DS / WP-CLI compatibility
 echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
 if [ $? -eq 1 ] ; then
