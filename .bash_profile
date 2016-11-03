@@ -2,11 +2,11 @@
 export PATH="$HOME/.composer/vendor/bin:$PATH";
 export PATH="$HOME/.rbenv/bin:$PATH";
 export PATH="$HOME/.yarn/bin:$PATH";
-export PATH="$PATH:/usr/local/go/bin";
+export PATH="$PATH:/usr/local/go/bin:$HOME/projects/go/bin";
 export PATH="$HOME/bin:$PATH";
 export PATH="$HOME/spark-installer:$PATH";
 
-export GOPATH=$HOME/projects/go
+export GOPATH="$HOME/projects/go";
 
 # Add Xampp bin to path, for DS / WP-CLI compatibility
 # echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
