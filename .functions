@@ -315,53 +315,25 @@ function frame::wp() {
 	echo "${NC}................................";
 	echo "";
 	echo "";
-
 	git clone git@bitbucket.org:framecreative/frame-wp-boilerplate.git ${PROJECT};
-
-	if [ $? -ne 0 ]; then
-		echo "";
-		echo "";
-		echo "${TAG}${RED}Exiting (error cloning git repo repo)";
-		echo "";
-		echo "";
-		exit 1;
-	fi
-
-	if [ ! -d ${PROJECT} ]; then
-		echo "";
-		echo "";
-		echo "${TAG}${RED}Exiting: (Project Folder Creation Failed)";
-		echo "";
-		echo "";
-		exit 1;
-	fi
-
+	echo "";
+	echo "";
+	echo "${TAG}${GREEN}Removing original Git Repo";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 	cd ${PROJECT};
 
+	rm -rf .git;
 
+	echo "";
+	echo "";
+	echo "${TAG}${GREEN}Initialising new Git repo";
+	echo "${NC}................................";
+	echo "";
+	echo "";
 
-
-	if [ -d .git ]; then
-
-		echo "";
-		echo "";
-		echo "${TAG}${GREEN}Removing original Git Repo";
-		echo "${NC}................................";
-		echo "";
-		echo "";
-
-		rm -rf .git;
-
-		echo "";
-		echo "";
-		echo "${TAG}${GREEN}Initialising new Git repo";
-		echo "${NC}................................";
-		echo "";
-		echo "";
-
-		git init;
-	fi
-
+	git init
 
 	echo "";
 	echo "";
@@ -396,4 +368,17 @@ function frame::wp() {
 
 function frame::sync () {
 	rsync -avzh --exclude '.DS_Store' --exclude "node_modules" --exclude "bower_components" --exclude "vendor" /Users/dev/projects/frame/ /Volumes/datastore-alex-bishop/frame/
+}
+
+function php::debug (){
+
+	if [ -f /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini ]; then
+		[ -f /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini ] && sudo mv /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini.deactivated
+		sudo brew services restart php70
+		echo "Xdebug is OFF"
+	else
+		[ -f /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini.deactivated ] && sudo mv /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini.deactivated /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini
+		sudo brew services restart php70
+		echo "Xdebug is ON"
+	fi
 }
