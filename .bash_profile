@@ -8,11 +8,11 @@ export PATH="$HOME/spark-installer:$PATH";
 export GOPATH=$HOME/projects/go
 
 # Add Xampp bin to path, for DS / WP-CLI compatibility
-echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
-if [ $? -eq 1 ] ; then
-	export XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
-	export PATH="$PATH:$XAMPP_PATH"
-fi
+# echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
+# if [ $? -eq 1 ] ; then
+# 	export XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
+# 	export PATH="$PATH:$XAMPP_PATH"
+# fi
 
 
 # Load the shell dotfiles, and then some:
