@@ -30,7 +30,6 @@ brew install gnu-sed --with-default-names
 # running `chsh`.
 brew install bash
 brew tap homebrew/versions
-brew install bash-completion2
 
 # Install brew cask for app installs later
 brew tap caskroom/cask
