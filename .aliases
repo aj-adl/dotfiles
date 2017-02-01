@@ -154,6 +154,7 @@ alias reload="exec $SHELL -l"
 
 # Shortcuts for edits
 alias editdns='sudo nano /private/etc/hosts && flush'
+alias edit::dns='sudo nano /private/etc/hosts && flush'
 alias edit::hosts='sudo nano /private/etc/hosts && flush'
 alias editssh='subl ~/.ssh/config'
 alias edit::ssh='subl ~/.ssh/config'
@@ -172,6 +173,7 @@ alias ggb="git fetch && git checkout"
 
 alias dot::edit='cd ~/projects/dotfiles && git pull origin master && subl .'
 alias dot::reload='cd ~/projects/dotfiles && git push origin master && bash bootstrap.sh'
+
 
 # WP CLI specific Aliases
 

@@ -362,7 +362,7 @@ function frame::wp() {
 	echo "";
 
 	composer install
-	npm install
+	yarn
 
 }
 
