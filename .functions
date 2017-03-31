@@ -452,3 +452,78 @@ function php::debug (){
 		echo "Xdebug is ON"
 	fi
 }
+
+function tempsync::push (){
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+	local NL=`tput il 1`
+
+	local DROPBOXPATH-"/Users/dev/Dropbox (Personal)";
+	local CURRENT=`pwd`;
+
+	if [ $# -ne 2 ]; then
+		echo "${TAG}${RED}Your must supply two arguments *project name*  &  *relative dir name*  ";
+		echo "${NC}................................";
+		echo "";
+		exit 1;
+	fi;
+
+	mkdir -p "${DROPBOXPATH}/${1}/${2}";
+
+	echo "$CURRENT/${2}" >  "${DROPBOXPATH}/${1}/${2}/source.txt";
+
+	echo "${TAG}${YELLOW}Preparing to rsync";
+	echo "${NC}................................";
+	echo "";
+
+	rsync -azPh "$CURRENT/${2}" "${DROPBOXPATH}/${1}/";
+
+	echo "${TAG}${GREEN}Successfull";
+	echo "${NC}................................";
+	echo "";
+
+}
+
+function tempsync::pull (){
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+	local NL=`tput il 1`
+
+	local DROPBOXPATH-"/Users/dev/Dropbox (Personal)";
+	local CURRENT=`pwd`;
+
+	if [ $# -lt 2 ]; then
+		echo "${TAG}${RED}Your must supply two arguments *project name*  &  *relative dir name*  ";
+		echo "${YELLOW}Third Argument is destination (optional) - dest as fed to rsync (relative or absolute) ";
+		echo "${NC}................................";
+		echo "";
+		exit 1;
+	fi;
+
+	local SOURCE=`cat ${DROPBOXPATH}/${1}/${2}/source.txt`;
+
+	if [ ! -n "${3}" ]; then
+		local PATH="${SOURCE}";
+	else
+		local PATH="${3}";
+	fi
+
+	rsync -azPh "${DROPBOXPATH}/${1}/${2}/" "$PATH/" ;
+
+	echo "${TAG}${GREEN}Successfull";
+	echo "${NC}................................";
+	echo "";
+
+}
