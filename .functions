@@ -466,7 +466,7 @@ function tempsync::push (){
 	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
 	local NL=`tput il 1`
 
-	local DROPBOXPATH="/Users/dev/Dropbox (Personal)";
+	local DROPBOXPATH="/Users/dev/Dropbox (Personal)/tmp-sync";
 	local CURRENT=`pwd`;
 
 	if [ $# -ne 2 ]; then
@@ -505,7 +505,7 @@ function tempsync::pull (){
 	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
 	local NL=`tput il 1`
 
-	local DROPBOXPATH="/Users/dev/Dropbox (Personal)";
+	local DROPBOXPATH="/Users/dev/Dropbox (Personal)/tmp-sync";
 	local CURRENT=`pwd`;
 
 	if [ $# -lt 2 ]; then
