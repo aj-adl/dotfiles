@@ -366,6 +366,30 @@ function frame::wp() {
 
 }
 
+function gdpl (){
+
+	set -e
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+
+	if [ $# -eq 0 ]; then
+		echo "${RED}Please supply a valid branch";
+		exit 1;
+	else
+
+		git checkout $@;
+
+		git merge master;
+
+		git push origin $@;
+
+		git checkout master;
+
+	fi;
+
+}
+
 function frame::sync () {
 	rsync -azhO --exclude '.DS_Store' --exclude "node_modules" --exclude "bower_components" --exclude "vendor" /Users/dev/projects/frame/ /Volumes/datastore-alex-bishop/frame/
 }
