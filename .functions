@@ -455,6 +455,8 @@ function php::debug (){
 
 function tempsync::push (){
 
+	set -e
+
 	local RED=`tput setaf 1`
 	local GREEN=`tput setaf 2`
 	local BLUE=`tput setaf 6`
@@ -464,7 +466,7 @@ function tempsync::push (){
 	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
 	local NL=`tput il 1`
 
-	local DROPBOXPATH-"/Users/dev/Dropbox (Personal)";
+	local DROPBOXPATH="/Users/dev/Dropbox (Personal)";
 	local CURRENT=`pwd`;
 
 	if [ $# -ne 2 ]; then
@@ -492,6 +494,8 @@ function tempsync::push (){
 
 function tempsync::pull (){
 
+	set -e
+
 	local RED=`tput setaf 1`
 	local GREEN=`tput setaf 2`
 	local BLUE=`tput setaf 6`
@@ -501,7 +505,7 @@ function tempsync::pull (){
 	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
 	local NL=`tput il 1`
 
-	local DROPBOXPATH-"/Users/dev/Dropbox (Personal)";
+	local DROPBOXPATH="/Users/dev/Dropbox (Personal)";
 	local CURRENT=`pwd`;
 
 	if [ $# -lt 2 ]; then
