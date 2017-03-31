@@ -372,21 +372,67 @@ function gdpl (){
 
 	local RED=`tput setaf 1`
 	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+	local NL=`tput il 1`
 
 	if [ $# -eq 0 ]; then
 		echo "${RED}Please supply a valid branch";
 		exit 1;
+	fi;
+
+	echo "";
+	echo "";
+	echo "${TAG}${YELLOW}Checking out branch \"${1}\"";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+	git checkout $1;
+
+	if [ $# -eq 2 ]; then
+
+		echo "";
+		echo "";
+		echo "${TAG}${YELLOW}Merging branch \"${2}\" into branch \"${1}\"";
+		echo "${NC}................................";
+		echo "";
+		echo "";
+
+
+		git merge $2;
 	else
 
-		git checkout $@;
+		echo "";
+		echo "";
+		echo "${TAG}${YELLOW}Merging branch \"master\" into branch \"${1}\" ";
+		echo "${NC}................................";
+		echo "";
+		echo "";
 
 		git merge master;
-
-		git push origin $@;
-
-		git checkout master;
-
 	fi;
+
+	echo "";
+	echo "";
+	echo "${TAG}${YELLOW}Merge complete! pushing to origin / ${1} ";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+	git push origin $1;
+
+	echo "";
+	echo "";
+	echo "${TAG}${GREEN}Push complete, returing you to branch \"master\" ";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+	git checkout master;
 
 }
 
