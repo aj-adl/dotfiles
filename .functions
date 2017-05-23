@@ -393,6 +393,8 @@ function gdpl (){
 
 	git checkout $1;
 
+	git pull origin $1;
+
 	if [ $# -eq 2 ]; then
 
 		echo "";
