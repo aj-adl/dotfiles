@@ -444,13 +444,13 @@ function frame::sync () {
 
 function php::debug (){
 
-	if [ -f /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini ]; then
-		[ -f /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini ] && sudo mv /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini.deactivated
-		sudo brew services restart php70
+	if [ -f /usr/local/etc/php/7.1/conf.d/ext-xdebug.ini ]; then
+		[ -f /usr/local/etc/php/7.1/conf.d/ext-xdebug.ini ] && sudo mv /usr/local/etc/php/7.1/conf.d/ext-xdebug.ini /usr/local/etc/php/7.1/conf.d/ext-xdebug.ini.deactivated
+		sudo brew services restart php71
 		echo "Xdebug is OFF"
 	else
-		[ -f /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini.deactivated ] && sudo mv /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini.deactivated /usr/local/etc/php/7.0/conf.d/ext-xdebug.ini
-		sudo brew services restart php70
+		[ -f /usr/local/etc/php/7.1/conf.d/ext-xdebug.ini.deactivated ] && sudo mv /usr/local/etc/php/7.1/conf.d/ext-xdebug.ini.deactivated /usr/local/etc/php/7.1/conf.d/ext-xdebug.ini
+		sudo brew services restart php71
 		echo "Xdebug is ON"
 	fi
 }
