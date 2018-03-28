@@ -366,6 +366,53 @@ function frame::wp() {
 
 }
 
+function frame::getenv() {
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+
+	local NL=`tput il 1`
+
+	local FILE=""
+	local ENV_URL="https://bitbucket.org/framecreative/frame-wp-boilerplate/raw/master/env"
+
+		if [ -z "$1" ];
+	then
+		read -p "${TAG}${YELLOW}Please Specify a file name: ${NC}'filename' / n  (type 'n' to cancel)   " answer
+		case ${answer} in
+		    n|N|No|no|cancel )
+		    	echo "${TAG}${RED} Exiting Setup (user cancellation)"
+		        return 1
+		    ;;
+		    * )
+		        FILE=${answer}
+		    ;;
+		esac
+	else
+		FILE=$1
+	fi
+
+	if [ -z "${FILE}" ]; then
+		echo "${TAG}${RED} Exiting Setup (input error)"
+		return 1
+	fi
+
+	wget -O $FILE $ENV_URL
+
+		echo "";
+	echo "";
+	echo "${TAG}${GREEN}env file downloaded to ${FILE} ";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+}
+
 function gdpl (){
 
 	set -e
