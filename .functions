@@ -499,8 +499,7 @@ function php::debug (){
 	    sudo mv $XDEBUG_ACTIVE $XDEBUG_DEACTIVE;
 		sudo brew services restart php
 		echo "Xdebug is OFF"
-	else
-		[ -f $XDEBUG_DEACTIVE ]; then
+	elif [ -f $XDEBUG_DEACTIVE ]; then
 		sudo mv $XDEBUG_DEACTIVE $XDEBUG_ACTIVE;
 		sudo brew services restart php
 		echo "Xdebug is ON"
