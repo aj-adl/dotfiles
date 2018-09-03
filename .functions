@@ -315,7 +315,7 @@ function frame::wp() {
 	echo "${NC}................................";
 	echo "";
 	echo "";
-	git clone git@bitbucket.org:framecreative/frame-wp-boilerplate.git ${PROJECT};
+	git clone git@bitbucket.org:framecreative/frame-wp-boilerplate.git ${PROJECT} --depth=1;
 	echo "";
 	echo "";
 	echo "${TAG}${GREEN}Removing original Git Repo";
@@ -342,7 +342,7 @@ function frame::wp() {
 	echo "";
 	echo "";
 
-	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/PROJECTNAME/${PROJECT}/g" {} \;
+	find ./ -type f -exec sed -i '' -e "s/[PROJECTNAME]/${PROJECT}/g" {} \;
 
 	echo "";
 	echo "";
