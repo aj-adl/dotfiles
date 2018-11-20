@@ -31,4 +31,4 @@ export MANPAGER='less -X';
 export NVM_DIR="/Users/dev/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export HOMEBREW_FORCE_BREWED_CURL =1
+export HOMEBREW_FORCE_BREWED_CURL=1
