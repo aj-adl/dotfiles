@@ -30,23 +30,26 @@ brew install gnu-sed --with-default-names
 # running `chsh`.
 brew install bash
 brew tap homebrew/versions
-brew install bash-completion2
+
+# Install brew cask for app installs later
+brew tap caskroom/cask
 
 # Install `wget` with IRI support.
 brew install wget --with-iri
 
-# Install RingoJS and Narwhal.
-# Note that the order in which these are installed is important;
-# see http://git.io/brew-narwhal-ringo.
-brew install ringojs
-brew install narwhal
+# Install Node
+brew install node
+brew install yarn
+
 
 # Install more recent versions of some OS X tools.
 brew install vim --override-system-vi
 brew install homebrew/dupes/grep
 brew install homebrew/dupes/openssh
 brew install homebrew/dupes/screen
-brew install homebrew/php/php56 --with-gmp
+brew install homebrew/php/php70 --with-gmp
+brew install homebrew/php/php70-xdebug
+brew install homebrew/php/php70-mcrypt
 
 # Install font tools.
 brew tap bramstein/webfonttools

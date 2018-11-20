@@ -1,13 +1,21 @@
 # Add `~/bin` to the `$PATH`
+export PATH="$HOME/.composer/vendor/bin:$PATH";
+export PATH="$HOME/.rbenv/bin:$PATH";
+export PATH="$HOME/.yarn/bin:$PATH";
+export PATH="$PATH:/usr/local/go/bin:$HOME/projects/go/bin";
 export PATH="$HOME/bin:$PATH";
 
+export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+export GOPATH="$HOME/projects/go";
 
 # Add Xampp bin to path, for DS / WP-CLI compatibility
-echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
-if [ $? -eq 1 ] ; then
-	export XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
-	export PATH="$XAMPP_PATH:$PATH"
-fi
+# echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
+# if [ $? -eq 1 ] ; then
+# 	export XAMPP_PATH=/Applications/XAMPP/xamppfiles/bin
+# 	export PATH="$PATH:$XAMPP_PATH"
+# fi
+
+
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
@@ -54,3 +62,8 @@ complete -W "NSGlobalDomain" defaults;
 
 # Add `killall` tab completion for common apps
 complete -o "nospace" -W "Contacts Calendar Dock Finder Mail Safari iTunes SystemUIServer Terminal Twitter" killall;
+
+#ruby
+if which rbenv > /dev/null;
+	then eval "$(rbenv init -)";
+fi

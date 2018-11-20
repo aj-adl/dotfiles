@@ -267,7 +267,7 @@ function kcp() {
 	pbcopy < ~/.ssh/$@.pub
 }
 
-function new-frame-wp() {
+function frame::wp() {
 
 	local RED=`tput setaf 1`
 	local GREEN=`tput setaf 2`
@@ -315,7 +315,7 @@ function new-frame-wp() {
 	echo "${NC}................................";
 	echo "";
 	echo "";
-	git clone git@bitbucket.org:framecreative/dazs-wp-boilerplate.git ${PROJECT};
+	git clone git@bitbucket.org:framecreative/frame-wp-boilerplate.git ${PROJECT} --depth=1;
 	echo "";
 	echo "";
 	echo "${TAG}${GREEN}Removing original Git Repo";
@@ -342,8 +342,7 @@ function new-frame-wp() {
 	echo "";
 	echo "";
 
-	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/dazs-wp-boilerplate/${PROJECT}/g" {} \;
-	LC_ALL=C find ./ -type f -exec sed -i '' -e "s/deploytest/${PROJECT}/g" {} \;
+	find ./ -type f -exec sed -i '' -e "s/[PROJECTNAME]/${PROJECT}/g" {} \;
 
 	echo "";
 	echo "";
@@ -363,7 +362,225 @@ function new-frame-wp() {
 	echo "";
 
 	composer install
-	npm install
-	bower install
+	yarn
+
+}
+
+function frame::getenv() {
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+
+	local NL=`tput il 1`
+
+	local FILE=""
+	local ENV_URL="https://bitbucket.org/framecreative/frame-wp-boilerplate/raw/master/env"
+
+		if [ -z "$1" ];
+	then
+		read -p "${TAG}${YELLOW}Please Specify a file name: ${NC}'filename' / n  (type 'n' to cancel)   " answer
+		case ${answer} in
+		    n|N|No|no|cancel )
+		    	echo "${TAG}${RED} Exiting Setup (user cancellation)"
+		        return 1
+		    ;;
+		    * )
+		        FILE=${answer}
+		    ;;
+		esac
+	else
+		FILE=$1
+	fi
+
+	if [ -z "${FILE}" ]; then
+		echo "${TAG}${RED} Exiting Setup (input error)"
+		return 1
+	fi
+
+	wget -O $FILE $ENV_URL
+
+		echo "";
+	echo "";
+	echo "${TAG}${GREEN}env file downloaded to ${FILE} ";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+}
+
+function gdpl (){
+
+	set -e
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+	local NL=`tput il 1`
+
+	if [ $# -eq 0 ]; then
+		echo "${RED}Please supply a valid branch";
+		exit 1;
+	fi;
+
+	echo "";
+	echo "";
+	echo "${TAG}${YELLOW}Checking out branch \"${1}\"";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+	git checkout $1;
+
+	git pull origin $1;
+
+	if [ $# -eq 2 ]; then
+
+		echo "";
+		echo "";
+		echo "${TAG}${YELLOW}Merging branch \"${2}\" into branch \"${1}\"";
+		echo "${NC}................................";
+		echo "";
+		echo "";
+
+
+		git merge $2;
+	else
+
+		echo "";
+		echo "";
+		echo "${TAG}${YELLOW}Merging branch \"master\" into branch \"${1}\" ";
+		echo "${NC}................................";
+		echo "";
+		echo "";
+
+		git merge master;
+	fi;
+
+	echo "";
+	echo "";
+	echo "${TAG}${YELLOW}Merge complete! pushing to origin / ${1} ";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+	git push origin $1;
+
+	echo "";
+	echo "";
+	echo "${TAG}${GREEN}Push complete, returing you to branch \"master\" ";
+	echo "${NC}................................";
+	echo "";
+	echo "";
+
+	git checkout master;
+
+}
+
+function frame::sync () {
+	rsync -azhO --exclude '.DS_Store' --exclude "node_modules" --exclude "bower_components" --exclude "vendor" /Users/dev/projects/frame/ /Volumes/datastore-alex-bishop/frame/
+}
+
+function php::debug (){
+
+	local PHP_VERSION="7.2";
+	local XDEBUG_ACTIVE="/usr/local/etc/php/${PHP_VERSION}/conf.d/ext-xdebug.ini";
+	local XDEBUG_DEACTIVE="/usr/local/etc/php/${PHP_VERSION}/conf.d/ext-xdebug.ini.deactivated";
+
+	if [ -f $XDEBUG_ACTIVE ]; then
+	    sudo mv $XDEBUG_ACTIVE $XDEBUG_DEACTIVE;
+		sudo brew services restart php
+		echo "Xdebug is OFF"
+	elif [ -f $XDEBUG_DEACTIVE ]; then
+		sudo mv $XDEBUG_DEACTIVE $XDEBUG_ACTIVE;
+		sudo brew services restart php
+		echo "Xdebug is ON"
+	fi
+}
+
+function tempsync::push (){
+
+	set -e
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+	local NL=`tput il 1`
+
+	local DROPBOXPATH="/Users/dev/Dropbox (Personal)/tmp-sync";
+	local CURRENT=`pwd`;
+
+	if [ $# -ne 2 ]; then
+		echo "${TAG}${RED}Your must supply two arguments *project name*  &  *relative dir name*  ";
+		echo "${NC}................................";
+		echo "";
+		exit 1;
+	fi;
+
+	mkdir -p "${DROPBOXPATH}/${1}/${2}";
+
+	echo "$CURRENT/${2}" >  "${DROPBOXPATH}/${1}/${2}/source.txt";
+
+	echo "${TAG}${YELLOW}Preparing to rsync";
+	echo "${NC}................................";
+	echo "";
+
+	rsync -azPh "$CURRENT/${2}" "${DROPBOXPATH}/${1}/";
+
+	echo "${TAG}${GREEN}Successfull";
+	echo "${NC}................................";
+	echo "";
+
+}
+
+function tempsync::pull (){
+
+	set -e
+
+	local RED=`tput setaf 1`
+	local GREEN=`tput setaf 2`
+	local BLUE=`tput setaf 6`
+	local YELLOW=`tput setaf 3`
+	local PURPLE=`tput setaf 5`
+	local NC=`tput sgr0` # No Color
+	local TAG="${BLUE}FRAME TOOLSET ${NC}:::: "
+	local NL=`tput il 1`
+
+	local DROPBOXPATH="/Users/dev/Dropbox (Personal)/tmp-sync";
+	local CURRENT=`pwd`;
+
+	if [ $# -lt 2 ]; then
+		echo "${TAG}${RED}Your must supply two arguments *project name*  &  *relative dir name*  ";
+		echo "${YELLOW}Third Argument is destination (optional) - dest as fed to rsync (relative or absolute) ";
+		echo "${NC}................................";
+		echo "";
+		exit 1;
+	fi;
+
+	local SOURCE=`cat ${DROPBOXPATH}/${1}/${2}/source.txt`;
+
+	if [ ! -n "${3}" ]; then
+		local PATH="${SOURCE}";
+	else
+		local PATH="${3}";
+	fi
+
+	rsync -azPh "${DROPBOXPATH}/${1}/${2}/" "$PATH/" ;
+
+	echo "${TAG}${GREEN}Successfull";
+	echo "${NC}................................";
+	echo "";
 
 }

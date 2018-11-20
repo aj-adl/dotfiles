@@ -11,9 +11,12 @@ alias d="cd ~/Documents/Dropbox"
 alias dl="cd ~/Downloads"
 alias dt="cd ~/Desktop"
 alias p="cd ~/projects"
+alias pf="cd ~/projects/frame"
 alias g="git"
 alias h="history"
 alias j="jobs"
+alias tt="tree -L 2"
+alias ttt="tree -L 3"
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`
@@ -27,6 +30,7 @@ alias l="ls -lF ${colorflag}"
 
 # List all files colorized in long format, including dot files
 alias la="ls -laF ${colorflag}"
+alias ll="ls -laF ${colorflag}"
 
 # List only directories
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
@@ -150,7 +154,12 @@ alias reload="exec $SHELL -l"
 
 # Shortcuts for edits
 alias editdns='sudo nano /private/etc/hosts && flush'
+alias edit::dns='sudo nano /private/etc/hosts && flush'
+alias edit::hosts='sudo nano /private/etc/hosts && flush'
 alias editssh='subl ~/.ssh/config'
+alias edit::ssh='subl ~/.ssh/config'
+alias edit::homestead='subl ~/.homestead/Homestead.yaml'
+alias edit::hs='subl ~/.homestead/Homestead.yaml'
 
 # Aliases from previous bash_profiles
 # Old muscle memory dies hard...
@@ -158,11 +167,17 @@ alias ..sites='cd ~/Documents/Websites'
 alias gga='git add'
 alias ggs='git status'
 alias ggm='git commit -m'
+alias ggo='git remote add origin'
+alias gpo="git push -u origin"
+alias ggb="git fetch && git checkout"
+
+alias dot::edit='cd ~/projects/dotfiles && git pull origin master && subl .'
+alias dot::reload='cd ~/projects/dotfiles && git push origin master && bash bootstrap.sh'
+
 
 # WP CLI specific Aliases
 
 alias wpv='wp ssh --host=vagrant'
 
 alias homestead='function __homestead() { (cd ~/Homestead && vagrant $*); unset -f __homestead; }; __homestead'
-
 alias pstorm="/Applications/PhpStorm.app/Contents/MacOS/phpstorm"
