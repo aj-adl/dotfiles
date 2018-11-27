@@ -611,9 +611,6 @@ function frame_composer_proxy(){
     local FULL_LOG_PATH="${FRAME_CLI_LOG_BASE_DIRECTORY}/${LOGFOLDER}";
     local CURRENT_FOLDER=${PWD##*/}
 
-    echo $FULL_LOG_PATH;
-    exit 0;
-
     if [ ! -d $FULL_LOG_PATH ]; then
         frame_log_do_setup;
     fi
