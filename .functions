@@ -592,7 +592,7 @@ function frame_log_do_setup(){
 
     if [ -z $FRAME_CLI_LOG_BASE_DIRECTORY ]; then
 
-        export FRAME_CLI_LOG_BASE_DIRECTORY = "${HOME}/.frame_cli/logs";
+        export FRAME_CLI_LOG_BASE_DIRECTORY="${HOME}/.frame_cli/logs";
 
     fi
 
@@ -600,7 +600,7 @@ function frame_log_do_setup(){
 
     mkdir -p "${FRAME_CLI_LOG_BASE_DIRECTORY}/${LOGFOLDER}"
 
-    export FRAME_CLI_LOG_FOLDER = "${FRAME_CLI_LOG_BASE_DIRECTORY}/${LOGFOLDER}"
+    export FRAME_CLI_LOG_FOLDER="${FRAME_CLI_LOG_BASE_DIRECTORY}/${LOGFOLDER}"
 
 }
 
