@@ -37,6 +37,10 @@ brew tap caskroom/cask
 # Install `wget` with IRI support.
 brew install wget --with-iri
 
+#ensure homebrew services are installed
+brew services list
+
+brew cask install brewservicesmenubar
 
 # Install more recent versions of some OS X tools.
 brew install vim --override-system-vi
