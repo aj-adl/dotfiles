@@ -8,8 +8,6 @@ brew cask install google-chrome
 
 # lets get our dev dependencies
 
-brew cask install phpstorm
-
 brew cask install sequel-pro
 
 brew cask install transmit
@@ -20,25 +18,19 @@ brew cask install iterm2
 
 brew cask install gas-mask
 
-brew cask install flycut
+brew cask install visual-studio-code
 
-# yeah 2 text editors and an IDE, sue me
-brew cask install sublime-text
-brew cask install atom
+brew cask install bartender
 
 # some utilities and other shit
 
 brew cask install flux
-
-brew cask install skitch
 
 brew cask install slack
 
 brew cask install divvy
 
 brew cask install evernote
-
-brew cask install screenmailer
 
 # Evil apps that we cannot live without
 
