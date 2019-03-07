@@ -171,7 +171,7 @@ alias ggo='git remote add origin'
 alias gpo="git push -u origin"
 alias ggb="git fetch && git checkout"
 
-alias dot::edit='cd ~/projects/dotfiles && git pull origin master && subl .'
+alias dot::edit='cd ~/projects/dotfiles && git pull origin master && code .'
 alias dot::reload='cd ~/projects/dotfiles && git push origin master && bash bootstrap.sh'
 
 
