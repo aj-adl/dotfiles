@@ -1,12 +1,5 @@
 # Add `~/bin` to the `$PATH`
-export PATH="$HOME/.composer/vendor/bin:$PATH";
-export PATH="$HOME/.rbenv/bin:$PATH";
-export PATH="$HOME/.yarn/bin:$PATH";
-export PATH="$PATH:/usr/local/go/bin:$HOME/projects/go/bin";
 export PATH="$HOME/bin:$PATH";
-
-export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-export GOPATH="$HOME/projects/go";
 
 # Add Xampp bin to path, for DS / WP-CLI compatibility
 # echo $PATH | grep -q -s "/Applications/XAMPP/xamppfiles/bin"
