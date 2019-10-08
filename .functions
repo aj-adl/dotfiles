@@ -480,7 +480,6 @@ function frame::sync () {
 
 function php::debug (){
 
-	local PHP_VERSION="7.3";
 	local XDEBUG_ACTIVE="/usr/local/etc/php/${PHP_VERSION}/conf.d/ext-xdebug.ini";
 	local XDEBUG_DEACTIVE="/usr/local/etc/php/${PHP_VERSION}/conf.d/ext-xdebug.ini.deactivated";
 

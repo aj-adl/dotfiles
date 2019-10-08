@@ -59,3 +59,6 @@ export PATH="$PATH:/usr/local/go/bin:$HOME/projects/go/bin";
 export PATH="$PATH:$(brew --prefix coreutils)/libexec/gnubin";
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export GOPATH="$HOME/projects/go";
+
+# PHP_VERSION (simplified)
+export PHP_VERSION="7.3";
