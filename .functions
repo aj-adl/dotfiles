@@ -608,3 +608,13 @@ function frame_composer_proxy(){
     /usr/local/bin/composer $@  2>&1 | tee -a "${FULL_LOG_PATH}/${CURRENT_FOLDER%/}-log.txt";
 
 }
+
+function load_keys(){
+
+	local keys=('id_rsa', 'frame_rsa');
+
+	for i in "${keys[@]}"; do 
+	ssh-add "~/.ssh/${i}"; 
+	done
+
+}
