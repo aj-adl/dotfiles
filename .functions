@@ -614,7 +614,7 @@ function load_keys(){
 	local keys=('id_rsa', 'frame_rsa');
 
 	for i in "${keys[@]}"; do 
-	ssh-add "~/.ssh/${i}"; 
+	ssh-add "${HOME}/.ssh/${i}"; 
 	done
 
 }
