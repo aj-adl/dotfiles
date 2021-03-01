@@ -632,12 +632,6 @@ function extract_certs(){
 
 filename=$1
 
-# extract ca-certs
-echo "> Extracting ca-certs..."
-openssl pkcs12 -in ${filename}.pfx -nodes -nokeys -cacerts -out ${filename}-ca.crt
-echo "done!"
-echo " "
-
 # extract key
 echo "> Extracting key file..."
 openssl pkcs12 -in ${filename}.pfx -nocerts -out ${filename}.key
@@ -648,18 +642,11 @@ echo " "
 echo "> Extracting crt..."
 openssl pkcs12 -in ${filename}.pfx -clcerts -nokeys -out ${filename}.crt
 
-echo "> Combining ca-certs with crt file..."
-# combine ca-certs and cert files
-cat ${filename}-ca.crt ${filename}.crt > ${filename}-full.crt
-
 # remove passphrase from key file
 echo "> Removing passphrase from keyfile"
 
-openssl rsa -in ${filename}.key -out ${filename}.key
+openssl rsa -in ${filename}.key -out ${filename}_dec.key
 
-# clean up
-rm ${filename}-ca.crt
-mv ${filename}-full.crt ${filename}.crt
 
 echo "done!"
 echo " "
